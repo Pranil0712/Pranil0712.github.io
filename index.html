@@ -3,271 +3,860 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pranil Patel | DevOps & Infrastructure Engineer</title>
+  <title>Pranil Patel | DevOps & Cloud Infrastructure Engineer</title>
+  <meta name="description" content="DevOps & Infrastructure Engineer in Pune, India. 100+ ECS Fargate microservices, $1,000+/month AWS savings, CI/CD, IaC, security hardening and AI-agent automation." />
+  <meta name="theme-color" content="#0b0f14" />
+
+  <!-- Social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Pranil Patel | DevOps & Cloud Infrastructure Engineer" />
+  <meta property="og:description" content="I run production AWS platforms: ECS Fargate, CloudFormation, Terraform, CI/CD, cost optimization and AI-agent automation." />
+  <meta name="twitter:card" content="summary" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Pranil Patel","jobTitle":"DevOps & Infrastructure Engineer","address":{"@type":"PostalAddress","addressLocality":"Pune","addressRegion":"Maharashtra","addressCountry":"IN"},"email":"mailto:pranilpatel1999@gmail.com","sameAs":["https://github.com/pranil-mmc","https://www.linkedin.com/in/pranil-patel-15a5381b4/"],"knowsAbout":["AWS","ECS Fargate","CloudFormation","Terraform","Kubernetes","CI/CD","Cloud cost optimization","Site reliability engineering"]}
+  </script>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f14'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='%2358a6ff'%3Epp%3C/text%3E%3C/svg%3E" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0d1117;
-      --card-bg: #161b22;
-      --border: #30363d;
-      --text-primary: #e6edf3;
-      --text-secondary: #8b949e;
+      --bg: #0b0f14;
+      --card: #131922;
+      --card-hover: #171e29;
+      --border: #232c38;
+      --border-strong: #34404f;
+      --text: #e8eef5;
+      --muted: #93a0b0;
       --accent: #58a6ff;
-      --accent-green: #3fb950;
-      --tag-bg: #21262d;
+      --accent-2: #7ee0b5;
+      --green: #3fb950;
+      --tag-bg: #1a222d;
+      --radius: 12px;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
     body {
-      background-color: var(--bg);
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      padding: 0 1.5rem;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    .container { max-width: 860px; margin: 0 auto; padding: 3.5rem 0; }
-    header {
-      margin-bottom: 3rem;
+
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(700px 400px at 85% -5%, rgba(88,166,255,.14), transparent 60%),
+        radial-gradient(600px 400px at -5% 30%, rgba(126,224,181,.07), transparent 60%),
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px) 0 0 / 48px 48px,
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px) 0 0 / 48px 48px;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+              mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+      pointer-events: none; z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ---------- Nav ---------- */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      background: rgba(11,15,20,.72);
       border-bottom: 1px solid var(--border);
-      padding-bottom: 2.5rem;
     }
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(63, 185, 80, 0.1);
-      color: var(--accent-green);
-      font-family: 'Fira Code', monospace;
-      font-size: 0.8rem;
-      padding: 0.3rem 0.75rem;
-      border-radius: 9999px;
-      border: 1px solid rgba(63, 185, 80, 0.25);
-      margin-bottom: 1rem;
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-family: 'Fira Code', monospace; font-weight: 600; font-size: 1rem; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 1.6rem; font-size: .9rem; color: var(--muted); }
+    .nav-links a { transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: #06101d !important; font-weight: 600;
+      padding: .45rem .95rem; border-radius: 8px;
     }
-    .dot { width: 7px; height: 7px; background: var(--accent-green); border-radius: 50%; }
-    h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-    .headline { font-size: 1.15rem; color: var(--accent); font-family: 'Fira Code', monospace; margin-bottom: 1rem; }
-    .bio { color: var(--text-secondary); max-width: 680px; font-size: 1rem; margin-bottom: 1.5rem; }
-    .links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .nav-cta:hover { filter: brightness(1.1); }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 5rem 0 3.5rem; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 3rem; align-items: center; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: .55rem;
+      font-family: 'Fira Code', monospace; font-size: .78rem;
+      color: var(--green);
+      background: rgba(63,185,80,.1); border: 1px solid rgba(63,185,80,.28);
+      padding: .32rem .8rem; border-radius: 999px; margin-bottom: 1.4rem;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); position: relative; }
+    .dot::after {
+      content: ""; position: absolute; inset: 0; border-radius: 50%;
+      background: var(--green); animation: ping 2s cubic-bezier(0,0,.2,1) infinite;
+    }
+    @keyframes ping { 75%, 100% { transform: scale(2.8); opacity: 0; } }
+
+    h1 {
+      font-size: clamp(2.4rem, 5.2vw, 3.7rem);
+      line-height: 1.08; font-weight: 800; letter-spacing: -.035em; margin-bottom: 1.1rem;
+    }
+    h1 .grad {
+      background: linear-gradient(100deg, var(--accent) 10%, var(--accent-2) 90%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .lead { color: var(--muted); font-size: 1.1rem; max-width: 560px; margin-bottom: 1.8rem; }
+    .lead strong { color: var(--text); font-weight: 600; }
+
+    .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--card-bg);
-      color: var(--text-primary);
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .7rem 1.2rem; border-radius: 9px; font-weight: 600; font-size: .95rem;
+      border: 1px solid var(--border-strong); background: var(--card);
+      transition: transform .15s, border-color .2s, background .2s;
     }
-    .btn:hover { border-color: var(--accent); color: var(--accent); background: #1c2128; }
-    section { margin-bottom: 3.5rem; }
-    h2 {
-      font-size: 1.35rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #06101d; }
+    .btn.primary:hover { filter: brightness(1.1); }
+
+    .term {
+      background: #0a0e13; border: 1px solid var(--border-strong); border-radius: var(--radius);
+      box-shadow: 0 20px 60px -20px rgba(88,166,255,.25);
+      font-family: 'Fira Code', monospace; font-size: .8rem; overflow: hidden;
     }
-    h2::before { content: "##"; color: var(--accent); font-family: 'Fira Code', monospace; font-size: 1.1rem; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      transition: transform 0.15s ease, border-color 0.15s ease;
+    .term-bar { display: flex; gap: 6px; padding: .7rem .9rem; background: #11171e; border-bottom: 1px solid var(--border); align-items: center; }
+    .term-bar i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+    .term-bar i:nth-child(1) { background: #ff5f57; } .term-bar i:nth-child(2) { background: #febc2e; } .term-bar i:nth-child(3) { background: #28c840; }
+    .term-bar span { margin-left: auto; color: var(--muted); font-size: .7rem; }
+    .term-body { padding: 1.1rem 1.2rem 1.3rem; line-height: 1.9; }
+    .term-body .p { color: var(--accent-2); }
+    .term-body .k { color: var(--muted); display: inline-block; min-width: 82px; }
+    .term-body .v { color: var(--text); }
+    .caret { display: inline-block; width: 8px; height: 1em; background: var(--accent); vertical-align: -2px; animation: blink 1s steps(2) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ---------- Stats ---------- */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--card); margin-top: 3.5rem; overflow: hidden;
     }
-    .card:hover { transform: translateY(-2px); border-color: #484f58; }
-    .card-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
-    .card-title { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); }
-    .card-title a { color: inherit; text-decoration: none; }
-    .card-title a:hover { color: var(--accent); }
-    .card-date { font-size: 0.8rem; color: var(--text-secondary); font-family: 'Fira Code', monospace; }
-    .card-role { font-size: 0.9rem; color: var(--accent); margin-bottom: 0.75rem; font-weight: 500; }
-    .card p { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+    .stat { padding: 1.5rem 1.25rem; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: 0; }
+    .stat b { display: block; font-size: 2rem; font-weight: 800; letter-spacing: -.03em; color: var(--text); line-height: 1.1; }
+    .stat b em { font-style: normal; color: var(--accent); }
+    .stat span { font-size: .84rem; color: var(--muted); }
+
+    /* ---------- Sections ---------- */
+    section { padding: 3.5rem 0; }
+    .eyebrow { font-family: 'Fira Code', monospace; color: var(--accent); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); font-weight: 700; letter-spacing: -.025em; margin-bottom: .6rem; }
+    .section-sub { color: var(--muted); max-width: 640px; margin-bottom: 2rem; }
+
+    .about { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem; }
+    .about p { color: var(--muted); margin-bottom: 1rem; }
+    .about p strong { color: var(--text); font-weight: 600; }
+    .focus { list-style: none; display: grid; gap: .7rem; }
+    .focus li {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: .85rem 1rem; font-size: .92rem; display: flex; gap: .7rem; align-items: flex-start;
+    }
+    .focus li::before { content: "▸"; color: var(--accent); font-family: 'Fira Code', monospace; }
+
+    /* Timeline */
+    .timeline { position: relative; display: grid; gap: 1.25rem; padding-left: 1.6rem; }
+    .timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--accent), var(--border) 80%); }
+    .job {
+      position: relative; background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.6rem; transition: border-color .2s, background .2s;
+    }
+    .job:hover { border-color: var(--border-strong); background: var(--card-hover); }
+    .job::before {
+      content: ""; position: absolute; left: -1.6rem; top: 1.9rem; width: 12px; height: 12px;
+      border-radius: 50%; background: var(--bg); border: 2px solid var(--accent);
+    }
+    .job.current::before { background: var(--accent); box-shadow: 0 0 0 4px rgba(88,166,255,.2); }
+    .job-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: baseline; }
+    .job-title { font-size: 1.12rem; font-weight: 650; }
+    .job-date { font-family: 'Fira Code', monospace; font-size: .78rem; color: var(--muted); }
+    .job-role { color: var(--accent); font-size: .92rem; font-weight: 500; margin: .15rem 0 .9rem; }
+    .job ul { list-style: none; display: grid; gap: .6rem; margin-bottom: 1.1rem; }
+    .job li { color: var(--muted); font-size: .93rem; padding-left: 1.2rem; position: relative; }
+    .job li::before { content: "→"; position: absolute; left: 0; color: var(--accent-2); }
+    .job li strong { color: var(--text); font-weight: 600; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: .45rem; }
     .tag {
-      background: var(--tag-bg);
-      color: #909dab;
-      border: 1px solid var(--border);
-      font-family: 'Fira Code', monospace;
-      font-size: 0.75rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
+      font-family: 'Fira Code', monospace; font-size: .73rem; color: #a6b3c2;
+      background: var(--tag-bg); border: 1px solid var(--border); padding: .2rem .55rem; border-radius: 6px;
     }
-    .skills-wrapper { display: flex; flex-direction: column; gap: 1rem; }
-    .skill-group-title {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.4rem;
+
+    /* Projects */
+    .group-label { font-family: 'Fira Code', monospace; font-size: .78rem; color: var(--muted); margin: 0 0 .9rem; display: flex; align-items: center; gap: .7rem; }
+    .group-label::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+    .projects { display: grid; gap: 1.25rem; margin-bottom: 2.2rem; }
+    .project {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.7rem; transition: transform .2s, border-color .2s;
     }
-    footer {
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      font-family: 'Fira Code', monospace;
+    .project:hover { transform: translateY(-3px); border-color: var(--border-strong); }
+    .project.featured { border-color: rgba(88,166,255,.35); background: linear-gradient(180deg, rgba(88,166,255,.06), var(--card) 45%); }
+    .project-head { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; flex-wrap: wrap; margin-bottom: .6rem; }
+    .project h3 { font-size: 1.15rem; font-weight: 650; }
+    .pill { font-family: 'Fira Code', monospace; font-size: .72rem; color: var(--accent); border: 1px solid rgba(88,166,255,.35); padding: .15rem .55rem; border-radius: 999px; }
+    .project > p { color: var(--muted); font-size: .94rem; margin-bottom: 1rem; }
+    .project > p strong { color: var(--text); font-weight: 600; }
+
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: .2rem 0 1.1rem; }
+    .flow span.node {
+      font-family: 'Fira Code', monospace; font-size: .74rem; color: var(--text);
+      background: #0e141b; border: 1px solid var(--border-strong); padding: .3rem .65rem; border-radius: 7px;
+    }
+    .flow span.node.win { border-color: rgba(126,224,181,.55); color: var(--accent-2); }
+    .flow span.arr { color: var(--accent); font-family: 'Fira Code', monospace; font-size: .8rem; }
+
+    .outcomes { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.1rem; }
+    .outcome { background: #0e141b; border: 1px solid var(--border); border-radius: 9px; padding: .75rem .9rem; }
+    .outcome b { display: block; font-size: .78rem; font-family: 'Fira Code', monospace; color: var(--accent-2); font-weight: 500; margin-bottom: .15rem; }
+    .outcome span { font-size: .84rem; color: var(--muted); line-height: 1.45; display: block; }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
+    .skill-card h4 { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; font-weight: 600; margin-bottom: .8rem; }
+    .skill-card .tag { font-size: .78rem; padding: .28rem .65rem; color: var(--text); }
+
+    /* Certs */
+    .certs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+    .cert { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; display: flex; gap: 1rem; }
+    .cert.wide { grid-column: 1 / -1; }
+    .cert-icon {
+      flex: none; width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center;
+      background: rgba(88,166,255,.12); border: 1px solid rgba(88,166,255,.3); color: var(--accent); font-size: 1.2rem;
+    }
+    .cert h4 { font-size: 1rem; font-weight: 600; line-height: 1.35; }
+    .cert .by { color: var(--accent); font-size: .84rem; margin: .15rem 0 .5rem; }
+    .cert p { color: var(--muted); font-size: .88rem; }
+
+    /* Contact */
+    .contact {
+      text-align: center; border: 1px solid rgba(88,166,255,.35); border-radius: 18px;
+      background: radial-gradient(500px 220px at 50% 0%, rgba(88,166,255,.16), transparent 70%), var(--card);
+      padding: 3.2rem 1.5rem;
+    }
+    .contact h2 { font-size: clamp(1.8rem, 3.6vw, 2.5rem); }
+    .contact p { color: var(--muted); max-width: 520px; margin: 0 auto 1.7rem; }
+    .contact .cta-row { justify-content: center; }
+    .mail { font-family: 'Fira Code', monospace; font-size: .85rem; color: var(--muted); margin-top: 1.3rem; }
+
+    footer { padding: 2.5rem 0 3rem; text-align: center; color: var(--muted); font-size: .8rem; font-family: 'Fira Code', monospace; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* Trust row */
+    .trust { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.4rem; }
+    .trust span {
+      font-size: .78rem; color: var(--muted); background: rgba(255,255,255,.03);
+      border: 1px solid var(--border); padding: .3rem .7rem; border-radius: 999px;
+    }
+    .trust span b { color: var(--accent-2); font-weight: 600; }
+
+    /* Architecture diagram */
+    .arch { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; display: grid; gap: 1rem; }
+    .lane { border: 1px dashed var(--border-strong); border-radius: 10px; padding: .9rem 1rem .4rem; }
+    .lane-title { font-family: 'Fira Code', monospace; font-size: .7rem; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .6rem; }
+    .lane .flow { margin-bottom: .6rem; }
+    .lane .flow span.node.sec { border-color: rgba(88,166,255,.45); }
+    .arch-note { font-size: .8rem; color: var(--muted); font-family: 'Fira Code', monospace; }
+
+    /* Principles */
+    .principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+    .principle { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
+    .principle b { display: block; font-size: 1rem; font-weight: 650; margin-bottom: .3rem; }
+    .principle b i { font-style: normal; font-family: 'Fira Code', monospace; color: var(--accent); margin-right: .5rem; font-size: .85rem; }
+    .principle span { color: var(--muted); font-size: .92rem; }
+
+    /* Scope strip */
+    .scope { margin-bottom: 1.8rem; }
+    .scope .flow { margin: 0; }
+
+    @media print {
+      body::before, nav, .term, .badge .dot::after { display: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      body { background: #fff; color: #111; }
+    }
+
+    @media (max-width: 860px) {
+      .principles { grid-template-columns: 1fr; }
+      .hero-grid, .about { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .outcomes { grid-template-columns: 1fr; }
+      .skills, .certs { grid-template-columns: 1fr; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { padding-top: 3rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .dot::after, .caret { animation: none; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="status-badge"><span class="dot"></span> Open to Opportunities</div>
-      <h1>Pranil Patel</h1>
-      <div class="headline">DevOps & Infrastructure Engineer</div>
-      <p class="bio">
-        Engineering resilient cloud architectures, container orchestration, and declarative CI/CD pipelines across AWS, Kubernetes, and Terraform. Bridging modern infrastructure automation with AI agent workflows.
-      </p>
-      <div class="links">
-        <a class="btn" href="https://github.com/Pranil0712" target="_blank">GitHub ↗</a>
-        <a class="btn" href="https://www.linkedin.com/in/pranil-patel-15a5381b4/" target="_blank">LinkedIn ↗</a>
-        <a class="btn" href="mailto:patelpranil99@gmail.com">Contact ✉</a>
+
+  <!-- NAV -->
+  <nav>
+    <div class="wrap nav-inner">
+      <a href="#top" class="logo">pranil<span>.</span>dev</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certs">Credentials</a>
+        <a href="mailto:pranilpatel1999@gmail.com" class="nav-cta">Hire me</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <header class="wrap hero">
+      <div class="hero-grid">
+        <div>
+          <div class="badge"><span class="dot"></span> Open to new opportunities</div>
+          <h1>I build the cloud platforms that keep <span class="grad">production boring.</span></h1>
+          <p class="lead">
+            DevOps &amp; Infrastructure Engineer in Pune. I run AWS infrastructure for
+            <strong>100+ microservices on ECS Fargate</strong>, cut cloud spend by
+            <strong>$1,000+/month</strong>, and automate everything between
+            <strong>git commit and production</strong>, now with AI agents on top.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="mailto:pranilpatel1999@gmail.com">✉ Get in touch</a>
+            <a class="btn" href="https://www.linkedin.com/in/pranil-patel-15a5381b4/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn" href="https://github.com/pranil-mmc" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="btn" href="Pranil_Resume.pdf" target="_blank" rel="noopener">⬇ Résumé (PDF)</a>
+          </div>
+          <div class="trust">
+            <span><b>✓</b> AWS Certified Solutions Architect – Associate</span>
+            <span><b>✓</b> Claude Certified Architect – Foundations</span>
+            <span>Open to DevOps · Cloud · Platform · SRE roles</span>
+          </div>
+        </div>
+
+        <div class="term" aria-hidden="true">
+          <div class="term-bar"><i></i><i></i><i></i><span>pranil@infra: ~</span></div>
+          <div class="term-body">
+            <div><span class="p">$</span> whoami</div>
+            <div><span class="k">role</span><span class="v">DevOps &amp; Infra Engineer</span></div>
+            <div><span class="k">location</span><span class="v">Pune, India</span></div>
+            <div><span class="k">cloud</span><span class="v">AWS · Azure · GCP</span></div>
+            <div><span class="k">iac</span><span class="v">CloudFormation · Terraform</span></div>
+            <div><span class="k">runtime</span><span class="v">ECS Fargate · EKS · Docker</span></div>
+            <div><span class="k">ai</span><span class="v">Claude API · MCP agents</span></div>
+            <div><span class="k">status</span><span class="v" style="color:var(--green)">available</span></div>
+            <div><span class="p">$</span> <span class="caret"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat"><b>100<em>+</em></b><span>microservices on ECS Fargate</span></div>
+        <div class="stat"><b>$1K<em>+</em></b><span>AWS savings per month</span></div>
+        <div class="stat"><b>100<em>+</em></b><span>repos under one Git workflow</span></div>
+        <div class="stat"><b>3<em>+</em></b><span>years across AWS, Azure &amp; GCP</span></div>
       </div>
     </header>
 
-    <section>
-      <h2>Featured Projects</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">
-              <a href="https://www.linkedin.com/in/pranil-patel-15a5381b4/" target="_blank">AI Learning Platform – End-to-End DevOps CI/CD ↗</a>
-            </span>
-            <span class="card-date">2026</span>
-          </div>
+    <!-- ABOUT -->
+    <section id="about" class="wrap reveal">
+      <div class="eyebrow">// about</div>
+      <h2>Reliability, automation, and cost, in that order.</h2>
+      <div class="about">
+        <div>
           <p>
-            Complete cloud deployment pipeline on AWS EC2. Automated infrastructure setup via Terraform and Ansible, containerized Node.js services with Docker, and implemented declarative Jenkins builds pushing versioned artifacts to DockerHub. Deployed high-availability pods to K3s using Helm charts with Prometheus telemetry endpoints.
+            I'm a <strong>DevOps and infrastructure engineer</strong> who likes owning the whole path:
+            designing the AWS foundation, writing it as code, wiring the pipelines, hardening security,
+            and being the person who finds the root cause when something breaks, so the same thing doesn't break twice.
           </p>
-          <div class="tags">
-            <span class="tag">AWS EC2</span>
-            <span class="tag">Terraform</span>
-            <span class="tag">Ansible</span>
-            <span class="tag">Kubernetes (K3s)</span>
-            <span class="tag">Helm</span>
-            <span class="tag">Jenkins</span>
-            <span class="tag">Prometheus</span>
+          <p>
+            Day to day that means <strong>ECS Fargate, CloudFormation, CodePipeline, RDS Proxy, CloudFront + WAF and Secrets Manager</strong>.
+            Before that I ran multi-cloud <strong>EKS and AKS</strong> workloads, and built <strong>Terraform, Ansible, Jenkins and Helm</strong>
+            pipelines from scratch.
+          </p>
+          <p>
+            I also build <strong>AI agent workflows on the Claude API and MCP</strong> to triage alerts and
+            summarize incidents. I hold the <strong>AWS Solutions Architect – Associate</strong> and
+            <strong>Claude Certified Architect – Foundations</strong> credentials.
+          </p>
+        </div>
+        <ul class="focus">
+          <li>Production AWS platforms on ECS Fargate at multi-service scale</li>
+          <li>Infrastructure as Code and repeatable, reviewable deployments</li>
+          <li>Cost optimization, security hardening and database reliability</li>
+          <li>Incident response, RCA and SRE practices</li>
+          <li>AI-agent automation for DevOps workflows</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section id="architecture" class="wrap reveal">
+      <div class="eyebrow">// architecture</div>
+      <h2>The platform I run, at a glance</h2>
+      <p class="section-sub">A simplified view of the production AWS platform behind 100+ microservices: how code ships, how traffic flows, and what protects it.</p>
+
+      <div class="arch">
+        <div class="lane">
+          <div class="lane-title">Delivery · commit to production</div>
+          <div class="flow">
+            <span class="node">GitHub (branch model + CODEOWNERS)</span><span class="arr">→</span>
+            <span class="node">CodePipeline</span><span class="arr">→</span>
+            <span class="node">Docker image → ECR (lifecycle policies)</span><span class="arr">→</span>
+            <span class="node win">ECS Fargate service</span>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">
-              <a href="https://github.com/Pranil0712/housing-app" target="_blank">Dream Housing App Pipeline ↗</a>
-            </span>
-            <span class="card-date">2026</span>
+        <div class="lane">
+          <div class="lane-title">Runtime · request path</div>
+          <div class="flow">
+            <span class="node">Users</span><span class="arr">→</span>
+            <span class="node">CloudFront + WAF</span><span class="arr">→</span>
+            <span class="node">ALB (consolidated)</span><span class="arr">→</span>
+            <span class="node win">ECS Fargate · 100+ microservices</span><span class="arr">→</span>
+            <span class="node">RDS Proxy → PostgreSQL</span>
+            <span class="node">Redis</span>
+            <span class="node">S3</span>
+          </div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-title">Cross-cutting · security, cost and visibility</div>
+          <div class="flow">
+            <span class="node sec">Secrets Manager</span>
+            <span class="node sec">IAM + KMS</span>
+            <span class="node sec">Least-privilege Security Groups</span>
+            <span class="node sec">GuardDuty</span>
+            <span class="node sec">CloudWatch</span>
+            <span class="node sec">Fargate Spot · Tiering · Snapshot archival</span>
+            <span class="node sec">CloudFormation (everything as code)</span>
+          </div>
+        </div>
+        <div class="arch-note">// simplified, no account or resource identifiers shown</div>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section id="principles" class="wrap reveal">
+      <div class="eyebrow">// how I work</div>
+      <h2>Principles I operate by</h2>
+      <p class="section-sub">What a team gets when I join.</p>
+      <div class="principles">
+        <div class="principle"><b><i>01</i>Kill toil</b><span>If I do something twice, it becomes a script, a pipeline or an agent: Boto3 and PowerShell tooling, CI/CD, and AI-assisted triage.</span></div>
+        <div class="principle"><b><i>02</i>Fix the cause, not the symptom</b><span>Every incident ends with a root-cause analysis, a permanent preventive fix, and a runbook so the fix lasts.</span></div>
+        <div class="principle"><b><i>03</i>Secure by default</b><span>No public database ports, least-privilege Security Groups and IAM, and credentials only through Secrets Manager.</span></div>
+        <div class="principle"><b><i>04</i>Make cost visible</b><span>Tagging and cost reporting first, then lifecycle policies, Spot capacity and consolidation, with savings that stick.</span></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="wrap reveal">
+      <div class="eyebrow">// experience</div>
+      <h2>Where I've worked</h2>
+      <p class="section-sub">Hands-on production ownership, with measurable results.</p>
+
+      <div class="scope">
+        <div class="flow">
+          <span class="node">Tritech · CI/CD for apps</span><span class="arr">→</span>
+          <span class="node">MicroStrategy · multi-cloud production support</span><span class="arr">→</span>
+          <span class="node win">MapMyCrop · owning a 100+ service platform</span>
+        </div>
+      </div>
+
+      <div class="timeline">
+
+        <div class="job current">
+          <div class="job-head">
+            <span class="job-title">Minutus Computing Pvt Ltd</span>
+            <span class="job-date">Mar 2026 – Present</span>
+          </div>
+          <div class="job-role">DevOps &amp; Infrastructure Engineer · Client: MapMyCrop · Pune, India</div>
+          <ul>
+            <li>Run production and non-production AWS infrastructure for <strong>100+ microservices on ECS Fargate</strong> across multi-region environments using <strong>CloudFormation and CodePipeline</strong>.</li>
+            <li>Led an AWS cost-optimization program (ECR lifecycle policies, ALB consolidation, Fargate Spot, S3 Intelligent-Tiering, EBS snapshot archival), saving <strong>over $1,000/month</strong>.</li>
+            <li>Migrated legacy EC2 deployments to <strong>fully automated ECS Fargate stacks with CI/CD</strong>, eliminating manual SSH deploys and improving release reliability.</li>
+            <li>Designed a standard Git branching strategy (feature/dev/uat/prod/hotfix) with <strong>CODEOWNERS and branch protection across 100+ repositories</strong>.</li>
+            <li>Remediated security gaps: closed publicly exposed database ports, introduced <strong>least-privilege Security Groups</strong> and enforced <strong>Secrets Manager</strong> for credentials.</li>
+            <li>Planned a <strong>zero-downtime migration to RDS Proxy</strong>, including connection-pool tuning and fixing idle-connection leaks in scheduled pipelines.</li>
+            <li>Built a Python/PostgreSQL/S3 <strong>data-masking pipeline</strong> that strips PII from production snapshots before they reach UAT.</li>
+            <li>Deployed <strong>CloudFront with custom cache behaviors and WAF</strong> to serve multiple front-end and back-end services under unified domains with SSL/TLS.</li>
+            <li>Delivered a <strong>multi-region Next.js pilot</strong> on ECS Fargate with CloudFront, WAF and CodePipeline for a major enterprise engagement.</li>
+            <li>Handle production incident response, RCA and CloudFormation stack recovery to protect availability and SLAs.</li>
+            <li>Building <strong>AI-agent automation with Claude/LLM APIs</strong> to triage alerts and summarize incident logs, and piloted an <strong>MCP-integrated agent</strong> for log analysis, cost reports and deployment checks.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">ECS Fargate</span><span class="tag">CloudFormation</span><span class="tag">CodePipeline</span>
+            <span class="tag">RDS Proxy</span><span class="tag">CloudFront + WAF</span><span class="tag">Secrets Manager</span>
+            <span class="tag">GuardDuty</span><span class="tag">Python (Boto3)</span><span class="tag">PowerShell</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">GeoServer</span><span class="tag">Nginx</span>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <span class="job-title">MicroStrategy <span style="color:var(--muted);font-weight:400">(now Strategy)</span></span>
+            <span class="job-date">Sep 2024 – Jan 2026</span>
+          </div>
+          <div class="job-role">Cloud Support Engineer · Pune, India</div>
+          <ul>
+            <li>Managed production cloud infrastructure for the MicroStrategy platform across <strong>AWS, Azure and GCP</strong>.</li>
+            <li>Ran containerized workloads on <strong>Amazon EKS, ECS and AKS</strong> for scalability and uptime.</li>
+            <li>Led <strong>SRE initiatives</strong>: deep-dive RCA on complex anomalies, then permanent preventive fixes.</li>
+            <li>Hardened security with <strong>IAM, KMS and Security Groups</strong>, with GuardDuty for threat detection.</li>
+            <li>Tuned databases: indexing, execution-plan analysis and fixes for high-CPU issues.</li>
+            <li>Automated tagging, backups and cost reporting with <strong>Python (Boto3 + Azure SDK)</strong>, plus <strong>Ansible</strong> playbooks and Bash for routine operations.</li>
+            <li>Built <strong>Grafana and CloudWatch</strong> monitoring, and kept Linux fleets patched and healthy. Managed incidents, changes and problems in ServiceNow within SLA targets and documented SOPs and DR runbooks in Confluence.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">GCP</span>
+            <span class="tag">EKS / AKS</span><span class="tag">Ansible</span><span class="tag">Terraform</span><span class="tag">Grafana</span><span class="tag">ServiceNow</span>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <span class="job-title">Tritech Software Pvt. Ltd.</span>
+            <span class="job-date">Feb 2023 – Aug 2024</span>
+          </div>
+          <div class="job-role">DevOps Engineer · Hyderabad, India</div>
+          <ul>
+            <li>Deployed apps with <strong>Helm charts on Kubernetes</strong>, improving scalability and reducing application downtime by <strong>25%</strong>.</li>
+            <li>Cut storage costs by <strong>25%</strong> through S3 lifecycle management and Glacier archival.</li>
+            <li>Automated routine system management with Python and Bash, saving about <strong>10 hours of manual work per week</strong>.</li>
+            <li>Built CI/CD pipelines with <strong>Jenkins, Docker and Git</strong>, automating build, test and deploy end to end.</li>
+            <li>Provisioned AWS (EC2, ELB, S3) with <strong>Terraform</strong>, shortening environment setup time.</li>
+            <li>Designed secure networks (VPC, subnets, NAT Gateways, VPC Peering, VPN) and enforced least privilege with granular <strong>IAM roles and NACLs</strong>.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">AWS</span><span class="tag">Kubernetes</span><span class="tag">Helm</span>
+            <span class="tag">Jenkins</span><span class="tag">Terraform</span><span class="tag">Ansible</span><span class="tag">Azure DevOps</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="wrap reveal">
+      <div class="eyebrow">// projects</div>
+      <h2>Selected work</h2>
+      <p class="section-sub">Production case studies and full pipelines I've built end to end.</p>
+
+      <div class="group-label">Production work</div>
+      <div class="projects">
+
+        <article class="project featured">
+          <div class="project-head">
+            <h3>AWS cost optimization: $1,000+/month saved</h3>
+            <span class="pill">2026 · MapMyCrop</span>
           </div>
           <p>
-            Zero-manual-touch continuous deployment workflow. Automated custom VPC, subnets, and EC2 provisioning using Terraform modules. Configured automated host provisioning with Ansible and declarative Jenkins pipelines deploying containerized workloads onto self-healing Kubernetes clusters.
+            A cost review across a 100+ microservice AWS estate. I removed waste in registry, networking, compute and storage without
+            touching reliability, then turned the findings into repeatable policy.
           </p>
+          <div class="flow">
+            <span class="node">ECR lifecycle policies</span><span class="arr">→</span>
+            <span class="node">ALB consolidation</span><span class="arr">→</span>
+            <span class="node">Fargate Spot</span><span class="arr">→</span>
+            <span class="node">S3 Intelligent-Tiering</span><span class="arr">→</span>
+            <span class="node">EBS snapshot archival</span><span class="arr">→</span>
+            <span class="node win">$1,000+ / month</span>
+          </div>
+          <div class="outcomes">
+            <div class="outcome"><b>REGISTRY &amp; STORAGE</b><span>Old images expired automatically; data tiered and snapshots archived.</span></div>
+            <div class="outcome"><b>NETWORK</b><span>Fewer load balancers carrying more services.</span></div>
+            <div class="outcome"><b>COMPUTE</b><span>Fargate Spot for workloads that tolerate interruption.</span></div>
+          </div>
           <div class="tags">
-            <span class="tag">Terraform</span>
-            <span class="tag">AWS VPC</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Jenkins CI/CD</span>
-            <span class="tag">K3s</span>
-            <span class="tag">GitOps</span>
+            <span class="tag">ECR</span><span class="tag">ALB</span><span class="tag">Fargate Spot</span>
+            <span class="tag">S3</span><span class="tag">EBS</span><span class="tag">Python (Boto3)</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>Database security &amp; RDS Proxy migration</h3>
+            <span class="pill">2026 · MapMyCrop</span>
+          </div>
+          <p>
+            A production database suffered recurring connection pressure while its network exposure was wider than it should be.
+            I traced the cause, closed the gaps, and planned the fix for <strong>zero downtime</strong> to the application.
+          </p>
+          <div class="flow">
+            <span class="node">Close public DB ports</span><span class="arr">→</span>
+            <span class="node">Least-privilege SGs</span><span class="arr">→</span>
+            <span class="node">Secrets Manager</span><span class="arr">→</span>
+            <span class="node">Fix idle-connection leaks</span><span class="arr">→</span>
+            <span class="node win">RDS Proxy cutover</span>
+          </div>
+          <div class="outcomes">
+            <div class="outcome"><b>PROBLEM</b><span>Recurring connection pressure on production, and database ports reachable from the public internet.</span></div>
+            <div class="outcome"><b>ROOT CAUSE</b><span>Idle connections leaking from scheduled pipelines, plus overly broad network access.</span></div>
+            <div class="outcome"><b>PREVENTION</b><span>Connection pooling via RDS Proxy, dedicated least-privilege Security Groups, and secrets only from Secrets Manager.</span></div>
+          </div>
+          <div class="tags">
+            <span class="tag">RDS</span><span class="tag">RDS Proxy</span><span class="tag">PostgreSQL</span>
+            <span class="tag">Security Groups</span><span class="tag">Secrets Manager</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>AI-agent automation for DevOps</h3>
+            <span class="pill">2026 · Claude API + MCP</span>
+          </div>
+          <p>
+            LLM agents that take over repetitive operations work: triaging infrastructure alerts, summarizing incident logs, and assisting with
+            Boto3 and CloudFormation script generation. An MCP-integrated pilot also handles log analysis, cost reports and deployment status checks.
+          </p>
+          <div class="flow">
+            <span class="node">Alert / logs</span><span class="arr">→</span>
+            <span class="node">Claude agent (MCP tools)</span><span class="arr">→</span>
+            <span class="node">Triage + summary</span><span class="arr">→</span>
+            <span class="node win">Less manual troubleshooting</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Claude API</span><span class="tag">MCP</span><span class="tag">Python</span>
+            <span class="tag">Boto3</span><span class="tag">CloudFormation</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>PII-safe UAT data pipeline</h3>
+            <span class="pill">2026 · MapMyCrop</span>
+          </div>
+          <p>
+            An automated pipeline that sanitizes personal data from production database snapshots before loading them into UAT,
+            so teams test on realistic data while meeting data-privacy requirements.
+          </p>
+          <div class="flow">
+            <span class="node">Prod snapshot</span><span class="arr">→</span>
+            <span class="node">Python masking job</span><span class="arr">→</span>
+            <span class="node">S3</span><span class="arr">→</span>
+            <span class="node win">Clean UAT database</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">S3</span>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="group-label">Personal projects · full CI/CD stacks</div>
+      <div class="projects" style="margin-bottom:0">
+
+        <article class="project">
+          <div class="project-head">
+            <h3>AI Learning Platform: End-to-End DevOps CI/CD</h3>
+            <span class="pill">2026</span>
+          </div>
+          <p>
+            A complete cloud delivery pipeline on AWS EC2. Terraform provisions the infrastructure and Ansible configures it. Node.js services
+            are containerized with Docker, built by declarative Jenkins pipelines, versioned into DockerHub, and deployed to K3s with Helm,
+            exposing Prometheus metrics endpoints.
+          </p>
+          <div class="flow">
+            <span class="node">Git push</span><span class="arr">→</span>
+            <span class="node">Jenkins</span><span class="arr">→</span>
+            <span class="node">Docker build</span><span class="arr">→</span>
+            <span class="node">DockerHub</span><span class="arr">→</span>
+            <span class="node">Helm</span><span class="arr">→</span>
+            <span class="node">K3s</span><span class="arr">→</span>
+            <span class="node">Prometheus</span>
+          </div>
+          <div class="tags">
+            <span class="tag">AWS EC2</span><span class="tag">Terraform</span><span class="tag">Ansible</span>
+            <span class="tag">Kubernetes (K3s)</span><span class="tag">Helm</span><span class="tag">Jenkins</span><span class="tag">Docker</span><span class="tag">Prometheus</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>Dream Housing App Pipeline</h3>
+            <span class="pill">2026</span>
+          </div>
+          <p>
+            A zero-manual-touch deployment workflow: a custom VPC, subnets and EC2 provisioned with reusable Terraform modules,
+            hosts configured by Ansible, and declarative Jenkins pipelines deploying containers onto a self-healing Kubernetes cluster.
+          </p>
+          <div class="flow">
+            <span class="node">Terraform modules</span><span class="arr">→</span>
+            <span class="node">VPC + EC2</span><span class="arr">→</span>
+            <span class="node">Ansible</span><span class="arr">→</span>
+            <span class="node">Jenkins CI/CD</span><span class="arr">→</span>
+            <span class="node">K3s cluster</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Terraform</span><span class="tag">AWS VPC</span><span class="tag">Docker</span>
+            <span class="tag">Jenkins CI/CD</span><span class="tag">K3s</span><span class="tag">GitOps</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="wrap reveal">
+      <div class="eyebrow">// stack</div>
+      <h2>Technical skills</h2>
+      <p class="section-sub">Tools I use in production and in my own projects.</p>
+
+      <div class="skills">
+        <div class="skill-card">
+          <h4>Cloud Platforms</h4>
+          <div class="tags">
+            <span class="tag">AWS: EC2, ECS, EKS, Lambda, S3, RDS, RDS Proxy, CloudFront, Route 53, ALB, Transit Gateway, VPN</span>
+            <span class="tag">Azure: VMs, AKS</span><span class="tag">GCP</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Infrastructure as Code &amp; Config</h4>
+          <div class="tags">
+            <span class="tag">CloudFormation</span><span class="tag">Terraform</span>
+            <span class="tag">Ansible</span><span class="tag">Helm</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Containers &amp; Orchestration</h4>
+          <div class="tags">
+            <span class="tag">Docker</span><span class="tag">Kubernetes (EKS, AKS, K3s)</span>
+            <span class="tag">ECS Fargate</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>CI/CD &amp; Observability</h4>
+          <div class="tags">
+            <span class="tag">CodePipeline</span><span class="tag">Jenkins</span><span class="tag">GitHub Actions</span><span class="tag">Azure DevOps</span>
+            <span class="tag">Git / GitHub</span><span class="tag">Grafana</span><span class="tag">CloudWatch</span><span class="tag">Prometheus</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Security</h4>
+          <div class="tags">
+            <span class="tag">IAM</span><span class="tag">KMS</span><span class="tag">WAF</span><span class="tag">GuardDuty</span>
+            <span class="tag">Security Groups / NACLs</span><span class="tag">Secrets Manager</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Scripting, OS &amp; Data</h4>
+          <div class="tags">
+            <span class="tag">Python (Boto3)</span><span class="tag">Bash</span><span class="tag">PowerShell</span><span class="tag">SQL</span>
+            <span class="tag">Linux (RHEL / CentOS)</span><span class="tag">Windows Server</span>
+            <span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Nginx</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Practices</h4>
+          <div class="tags">
+            <span class="tag">Incident response &amp; RCA</span><span class="tag">SRE</span><span class="tag">DevSecOps</span>
+            <span class="tag">AWS cost optimization</span><span class="tag">ServiceNow / Jira / Confluence</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Generative AI</h4>
+          <div class="tags">
+            <span class="tag">AI agents</span><span class="tag">Claude API</span>
+            <span class="tag">MCP</span><span class="tag">LLM APIs</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>Experience</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Minutus Computing</span>
-            <span class="card-date">Mar 2026 – Present</span>
-          </div>
-          <div class="card-role">DevOps and Infrastructure Engineer · Pune, India</div>
-          <p>
-            Architecting scalable cloud infrastructure using Terraform and AWS. Streamlining software delivery through Jenkins and Argo CD GitOps pipelines. Managing containerized workloads and cluster health across Kubernetes and Docker environments.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Strategy</span>
-            <span class="card-date">Sep 2024 – Feb 2026</span>
-          </div>
-          <div class="card-role">Cloud Support Engineer · Pune, India</div>
-          <p>
-            Maintained multi-cloud environments (AWS, Azure, GCP). Handled container triage, Grafana log telemetry analysis, and automated troubleshooting workflows.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Certifications</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="card-title">Claude Certified Architect – Foundations (CCAR-F)</div>
-          <div class="card-role">Anthropic · Issued Sep 2026</div>
-          <p>Validation of system architecture design with Claude API, Agent SDK, MCP (Model Context Protocol), and structured autonomous tool pipelines.</p>
-        </div>
-        <div class="card">
-          <div class="card-title">AWS Certified Solutions Architect</div>
-          <div class="card-role">Amazon Web Services · Issued Jun 2024</div>
-          <p>Architecting secure, fault-tolerant, cost-optimized, and resilient distributed architectures on AWS.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Technical Stack</h2>
-      <div class="skills-wrapper">
-        <div>
-          <div class="skill-group-title">Cloud & Platforms</div>
-          <div class="tags">
-            <span class="tag">AWS (VPC, EC2, IAM, S3, EBS)</span>
-            <span class="tag">GCP (GKE)</span>
-            <span class="tag">Azure</span>
+    <!-- CERTS & EDUCATION -->
+    <section id="certs" class="wrap reveal">
+      <div class="eyebrow">// credentials</div>
+      <h2>Certifications &amp; education</h2>
+      <div class="certs" style="margin-top:1.5rem">
+        <div class="cert">
+          <div class="cert-icon">★</div>
+          <div>
+            <h4>Claude Certified Architect – Foundations (CCAR-F)</h4>
+            <div class="by">Anthropic · Issued Sep 2026</div>
+            <p>Designing systems with the Claude API, Agent SDK and MCP (Model Context Protocol), including structured, autonomous tool pipelines.</p>
           </div>
         </div>
-        <div>
-          <div class="skill-group-title">IaC & Automation</div>
-          <div class="tags">
-            <span class="tag">Terraform</span>
-            <span class="tag">Ansible</span>
-            <span class="tag">Helm</span>
-            <span class="tag">Bash</span>
-            <span class="tag">Python</span>
+        <div class="cert">
+          <div class="cert-icon">☁</div>
+          <div>
+            <h4>AWS Certified Solutions Architect – Associate</h4>
+            <div class="by">Amazon Web Services · Issued Jun 2024</div>
+            <p>Designing secure, fault-tolerant, cost-optimized and resilient distributed architectures on AWS.</p>
           </div>
         </div>
-        <div>
-          <div class="skill-group-title">Containers & Orchestration</div>
-          <div class="tags">
-            <span class="tag">Kubernetes (K8s / K3s)</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Containerd</span>
-          </div>
-        </div>
-        <div>
-          <div class="skill-group-title">CI/CD & Observability</div>
-          <div class="tags">
-            <span class="tag">Jenkins</span>
-            <span class="tag">Argo CD</span>
-            <span class="tag">Prometheus</span>
-            <span class="tag">Grafana</span>
-            <span class="tag">Git</span>
+        <div class="cert wide">
+          <div class="cert-icon">🎓</div>
+          <div>
+            <h4>B.Tech</h4>
+            <div class="by">K.K. Wagh College</div>
           </div>
         </div>
       </div>
     </section>
 
-    <footer>
-      <span>Designed & deployed with HTML/CSS · 2026</span>
-    </footer>
-  </div>
+    <!-- CONTACT -->
+    <section id="contact" class="wrap reveal">
+      <div class="contact">
+        <div class="eyebrow">// let's talk</div>
+        <h2>Need a DevOps engineer who ships, secures and saves money?</h2>
+        <p>I'm open to DevOps, Cloud and Platform Engineering roles. Send me a message and I'll reply quickly.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="mailto:pranilpatel1999@gmail.com?subject=Opportunity%20for%20Pranil%20Patel">✉ Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/pranil-patel-15a5381b4/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+          <a class="btn" href="Pranil_Resume.pdf" target="_blank" rel="noopener">⬇ Download résumé</a>
+        </div>
+        <div class="mail">pranilpatel1999@gmail.com</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>© <span id="yr">2026</span> Pranil Patel · Pune, India</footer>
+
+  <script>
+    const items = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.08 });
+      items.forEach(el => io.observe(el));
+    } else {
+      items.forEach(el => el.classList.add('in'));
+    }
+
+    const links = [...document.querySelectorAll('.nav-links a[href^="#"]')].filter(a => !a.classList.contains('nav-cta'));
+    const secs = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    secs.forEach(s => spy.observe(s));
+
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
